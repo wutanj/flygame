@@ -54,10 +54,10 @@ def check_events(ai_settings, screen, ship, bullets):
             check_keyup_events(event, ship)
 
 
-def update_screen(aisettings, screen, ship, aliens, bullets):
+def update_screen(ai_settings, screen, ship, aliens, bullets):
     """
     更新屏幕上的图像，并切换到新屏幕
-    :param aisettings:
+    :param ai_settings:
     :param screen:
     :param ship:
     :param aliens
@@ -65,7 +65,7 @@ def update_screen(aisettings, screen, ship, aliens, bullets):
     :return:
     """
     # 每次循环都重绘屏幕
-    screen.fill(aisettings.bg_color)
+    screen.fill(ai_settings.bg_color)
     # 在飞船和外星人后面重绘所有子弹
     for bullet in bullets.sprites():
         bullet.draw_bullet()
@@ -126,4 +126,9 @@ def create_fleet(ai_settings, screen, ship, aliens):
         # 创建一个外星人并将它加入到当前行
         for alien_number in range(number_aliens_x):
             create_alien(ai_settings, screen, aliens, alien_number,row_number)
+
+
+def update_aliens(aliens):
+    """更新外星人群中所有外星人的位置"""
+    aliens.update()
 
